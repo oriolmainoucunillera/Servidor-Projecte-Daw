@@ -23,8 +23,8 @@ Route::group(['prefix' => 'auth'], function () {
         // ProducteController
         Route::get('productes/all','ProducteController@getAllProductes');
         Route::get('productes/{producte_id}','ProducteController@getProducte');
-        Route::get('productes/{producte_nom}', 'ProducteController@getAllCategoria');
-        Route::get('productes/ofertes', 'ProducteController@getOfertes');
+        Route::get('productes/{categoria_id}', 'ProducteController@getAllCategoria');
+        Route::get('productes_ofertes', 'ProducteController@getOfertes');
 
         // AdministradorController
         Route::get('admin/all','AdministradorController@getAllProductes');

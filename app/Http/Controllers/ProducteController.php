@@ -18,26 +18,22 @@ class ProducteController extends Controller
         return Producte::find($id);
     }
 
-    public function getAllCategoria($nom)
+    public function getAllCategoria($categoria_id)
     {
-        // No funciona
-        $idCategoria = Categoria::query()
-            ->where('nom', $nom)
-            ->get('id');
-
-        $productes = Producte::query()
-            ->where('categoria_id', $idCategoria)
-            ->get();
-
-        return $productes;
+        $idCategoria = APP\Categoria::where('id', $categoria_id)->value('id');
+        //$productes = Producte::where('categoria_id', $idCategoria)->get();
+        return $idCategoria;
     }
 
     public function getOfertes()
     {
-        $productes = Producte::query()
+        /*$productes = Producte::query()
             ->where('oferta','>', 0)
             ->get();
+        return $productes;*/
+        $productes = Producte::where('oferta','>', 0)->get();
         return $productes;
+
     }
 
 
