@@ -29,4 +29,11 @@ class MarcaController extends Controller
         $marques->update($request->all());
         return $marques;
     }
+
+    public function deleteMarca($id)
+    {
+        $marques = Marca::findOrFail($id);
+        $marques->delete();
+        return 204;
+    }
 }

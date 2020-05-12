@@ -23,7 +23,7 @@ Route::group(['prefix' => 'auth'], function () {
         // ProducteController
         Route::get('productes','ProducteController@getAllProductes');
         Route::get('productes/{producte_id}','ProducteController@getProducte');
-        Route::get('productes/{categoria_id}', 'ProducteController@getAllCategoria');
+        Route::get('productes/categoria/{categoria_id}', 'ProducteController@getAllCategoria');
         Route::get('productes_ofertes', 'ProducteController@getOfertes');
 
         // AdministradorController
@@ -38,6 +38,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('marques/{marca_id}','MarcaController@getMarca');
         Route::post('marques/add','MarcaController@addMarca');
         Route::post('marques/edit/{marca_id}','MarcaController@editMarca');
+        Route::post('marques/delete/{marca_id}','MarcaController@deleteMarca');
 
     });
 });

@@ -20,7 +20,7 @@ class ProducteController extends Controller
 
     public function getAllCategoria($categoria_id)
     {
-        $idCategoria = APP\Categoria::where('id', $categoria_id)->value('id');
+        $idCategoria = Categoria::where('id', $categoria_id)->get();
         //$productes = Producte::where('categoria_id', $idCategoria)->get();
         return $idCategoria;
     }
