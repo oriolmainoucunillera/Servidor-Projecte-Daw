@@ -40,5 +40,8 @@ Route::group(['prefix' => 'auth'], function () {
         Route::post('marques/edit/{marca_id}','MarcaController@editMarca');
         Route::post('marques/delete/{marca_id}','MarcaController@deleteMarca');
 
+        // CategoriaContoller
+        Route::get('categories','CategoriaController@index');
+
     });
 });
