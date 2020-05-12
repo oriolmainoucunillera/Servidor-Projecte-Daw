@@ -27,14 +27,7 @@ class ProducteController extends Controller
 
     public function getOfertes()
     {
-        /*$productes = Producte::query()
-            ->where('oferta','>', 0)
-            ->get();
-        return $productes;*/
         $productes = Producte::where('oferta','>', 0)->get();
         return $productes;
-
     }
-
-
 }

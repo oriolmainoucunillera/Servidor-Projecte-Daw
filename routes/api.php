@@ -21,17 +21,23 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('productes/nous', 'HomeController@getNProductes');
 
         // ProducteController
-        Route::get('productes/all','ProducteController@getAllProductes');
+        Route::get('productes','ProducteController@getAllProductes');
         Route::get('productes/{producte_id}','ProducteController@getProducte');
         Route::get('productes/{categoria_id}', 'ProducteController@getAllCategoria');
         Route::get('productes_ofertes', 'ProducteController@getOfertes');
 
         // AdministradorController
-        Route::get('admin/all','AdministradorController@getAllProductes');
+        Route::get('admin','AdministradorController@getAllProductes');
         Route::post('admin/add/producte','AdministradorController@addProducte');
         Route::post('admin/edit/producte/{producte_id}','AdministradorController@editProducte');
         Route::post('admin/delete/producte/{producte_id}','AdministradorController@deleteProducte');
         Route::post('admin/edit/usuari/{usuari_id}','AdministradorController@editUsuari');
+
+        // MarcaController
+        Route::get('marques','MarcaController@getAllMarques');
+        Route::get('marques/{marca_id}','MarcaController@getMarca');
+        Route::post('marques/add','MarcaController@addMarca');
+        Route::post('marques/edit/{marca_id}','MarcaController@editMarca');
 
     });
 });
