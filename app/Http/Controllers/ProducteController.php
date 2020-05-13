@@ -20,14 +20,21 @@ class ProducteController extends Controller
 
     public function getAllCategoria($categoria_id)
     {
-        $idCategoria = Categoria::where('id', $categoria_id)->get();
-        //$productes = Producte::where('categoria_id', $idCategoria)->get();
-        return $idCategoria;
+        //$idCategoria = Categoria::where('id', $categoria_id)->get();
+        $productes = Producte::where('categoria_id', $categoria_id)->get();
+        return $productes;
     }
 
     public function getOfertes()
     {
-        $productes = Producte::where('oferta','>', 0)->get();
+        $productes = Producte::where('oferta', '>', 0)->get();
+        return $productes;
+    }
+
+    public function buscador($nom)
+    {
+        $query = trim($nom);
+        $productes = Producte::where('nom', 'LIKE', '%' . $query . '%')->get();
         return $productes;
     }
 }

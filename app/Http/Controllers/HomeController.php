@@ -18,11 +18,11 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function getNProductes()
+    public function getNProductes($max)
     {
         $productes = Producte::query()
             ->orderBy('created_at', 'desc')
-            ->limit(12)
+            ->limit($max)
             ->get();
         return $productes;
     }

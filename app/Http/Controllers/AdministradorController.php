@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Administrador;
 use App\Producte;
-use App\User;
 use Illuminate\Http\Request;
 
 class AdministradorController extends Controller
@@ -30,10 +30,10 @@ class AdministradorController extends Controller
         return 204;
     }
 
-    public function editUsuari($id, Request $request)
+    public function editAdmin($id, Request $request)
     {
-        $users = User::findOrFail($id);
-        $users->update($request->all());
-        return $users;
+        $admin = Administrador::findOrFail($id);
+        $admin->update($request->all());
+        return $admin;
     }
 }
