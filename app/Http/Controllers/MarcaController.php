@@ -7,7 +7,7 @@ use App\Marca;
 
 class MarcaController extends Controller
 {
-    public function getAllMarques()
+    public function getAllMarca()
     {
         return Marca::all();
     }

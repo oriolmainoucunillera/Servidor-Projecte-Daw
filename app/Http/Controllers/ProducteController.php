@@ -37,4 +37,25 @@ class ProducteController extends Controller
         $productes = Producte::where('nom', 'LIKE', '%' . $query . '%')->get();
         return $productes;
     }
+
+    public function ordenar($ordre) {
+        if ($ordre == 'nom_asc') {
+            $productes = Producte::query()
+                ->orderBy('nom', 'asc')
+                ->get();
+        } else if ($ordre == 'nom_desc') {
+            $productes = Producte::query()
+                ->orderBy('nom', 'desc')
+                ->get();
+        } else if($ordre == 'preu_asc') {
+            $productes = Producte::query()
+                ->orderBy('preu', 'asc')
+                ->get();
+        } else if($ordre == 'preu_desc') {
+            $productes = Producte::query()
+                ->orderBy('preu', 'desc')
+                ->get();
+        }
+        return $productes;
+    }
 }

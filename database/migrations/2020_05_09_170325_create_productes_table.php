@@ -20,8 +20,8 @@ class CreateProductesTable extends Migration
             $table->integer('stock');
             $table->double('preu');
             $table->foreignId('categoria_id');
-            $table->string('color');
-            $table->string('foto');
+            $table->foreignId('color_id');
+            $table->string('imatge');
             $table->string('descripcio_curta');
             $table->text('descripcio_llarga');
             $table->integer('oferta');
@@ -29,6 +29,7 @@ class CreateProductesTable extends Migration
 
             $table->foreign('marca_id')->references('id')->on('marcas');
             $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('color_id')->references('id')->on('colors');
         });
     }
 

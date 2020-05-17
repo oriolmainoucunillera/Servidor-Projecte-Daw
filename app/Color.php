@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Marca extends Model
+class Color extends Model
 {
     protected $fillable = [
         'nom',
-        //'logo',
     ];
 }

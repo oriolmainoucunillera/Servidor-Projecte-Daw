@@ -10,7 +10,7 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index()
@@ -23,6 +23,25 @@ class HomeController extends Controller
         $productes = Producte::query()
             ->orderBy('created_at', 'desc')
             ->limit($max)
+            ->get();
+        return $productes;
+    }
+
+    public function getUltimesUnitats()
+    {
+        $productes = Producte::where('stock', '>', 0)
+            ->orderBy('stock', 'asc')
+            ->limit(4)
+            ->get();
+        return $productes;
+    }
+
+    public function getUltimesUnitats2()
+    {
+        $productes = Producte::where('stock', '>', 0)
+            ->orderBy('stock', 'asc')
+            ->skip(4)
+            ->limit(4)
             ->get();
         return $productes;
     }

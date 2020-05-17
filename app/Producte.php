@@ -8,8 +8,8 @@ class Producte extends Model
 {
     protected $fillable = [
         'nom', 'marca_id', 'stock',
-        'preu', 'categoria_id', 'color',
-        'foto', 'descripcio_curta',
+        'preu', 'categoria_id', 'color_id',
+        'imatge', 'descripcio_curta',
         'descripcio_llarga', 'oferta'
     ];
 }
