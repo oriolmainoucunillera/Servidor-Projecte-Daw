@@ -17,42 +17,50 @@ use Illuminate\Support\Facades\Route;
 //        Route::get('user', 'AuthController@user');
 
         // HomeController
-        Route::get('productes/nous/{numero}', 'HomeController@getNProductes');
-        Route::get('productes/getUltimesUnitats', 'HomeController@getUltimesUnitats');
-        Route::get('productes/getUltimesUnitats2', 'HomeController@getUltimesUnitats2');
+        Route::get('productes/nous/{numero}', 'HomeController@getNProductes'); // Retorna els últims N productes
+        Route::get('productes/getUltimesUnitats', 'HomeController@getUltimesUnitats'); // Retorna els 4 productes amb menys stock
+        Route::get('productes/getUltimesUnitats2', 'HomeController@getUltimesUnitats2'); // Retorna els productes del 5 al 8 amb menys stock
 
         // ProducteController
-        Route::get('productes','ProducteController@getAllProductes');
-        Route::get('productes/{producte_id}','ProducteController@getProducte');
-        Route::get('productes/categoria/{categoria_id}', 'ProducteController@getAllCategoria'); // productes amb la id catgoria
-        Route::get('productes_ofertes', 'ProducteController@getOfertes');
-        Route::get('buscador/{nom}', 'ProducteController@buscador');
-        Route::get('ordenar/{nom}', 'ProducteController@ordenar');
+        Route::get('productes/all','ProducteController@getAllProductes'); // Retorna tots els productes
+        Route::get('productes/{producte_id}','ProducteController@getProducte'); // Retorna el producte amb id especificat
+        Route::get('productes/categoria/{categoria_id}', 'ProducteController@getAllCategoria'); // Productes amb la id catgoria
+        Route::get('productes_ofertes', 'ProducteController@getOfertes'); // Retorna els productes que estan en oferta
+        Route::get('buscador/{nom}', 'ProducteController@buscador'); // Retorna tots els productes amb el nom especificat
+        Route::get('ordenar/{nom}', 'ProducteController@ordenar'); // Retorna tots els productes ordenats per l'ordre especificat
+
+        // CompraController
+        Route::post('comprar', 'CompraController@comprarProducte'); // Realitza compra d'un producte
 
         // AdministradorController
-        Route::get('admin/allproductes','AdministradorController@getAllProductes');
-        Route::post('admin/add/producte','AdministradorController@addProducte');
-        Route::post('admin/edit/producte{producte_id}','AdministradorController@editProducte');
-        Route::post('admin/delete/producte{producte_id}','AdministradorController@deleteProducte');
-        Route::post('admin/edit/{usuari_id}','AdministradorController@editAdmin');
+        Route::get('admin/allproductes','AdministradorController@getAllProductes'); // Retorna tots els productes
+        Route::post('admin/add/producte','AdministradorController@addProducte'); // Afegeix un producte
+        Route::post('admin/edit/producte{producte_id}','AdministradorController@editProducte'); // Edita el producte amb id especificat
+        Route::post('admin/delete/producte{producte_id}','AdministradorController@deleteProducte'); // Elimina el producte
+        Route::post('admin/edit/{usuari_id}','AdministradorController@editAdmin'); // Edita el admin amb id especificat
+        Route::post('admin/addAdmin','AdministradorController@addAdmin'); // Afegir un admin
+        Route::get('admin/allAdmins', 'AdministradorController@allAdmins'); // Retorna tots els admins
 
         // MarcaController
-        Route::get('marques','MarcaController@getAllMarca');
-        Route::get('marques{marca_id}','MarcaController@getMarca');
-        Route::post('marques/add','MarcaController@addMarca');
-        Route::post('marques/edit/{marca_id}','MarcaController@editMarca');
-        Route::post('marques/delete/{marca_id}','MarcaController@deleteMarca');
+        Route::get('marca/all','MarcaController@getAllMarca'); // Retorna totes les marques
+        Route::get('marques{marca_id}','MarcaController@getMarca'); // Retorna la marca del id especificat
+        Route::post('admin/marca/add','MarcaController@addMarca'); // Afegim una marca
+        Route::post('admin/marca/edit{marca_id}','MarcaController@editMarca'); // Editem una marca
+        Route::post('admin/marca/delete{marca_id}','MarcaController@deleteMarca'); // Eliminem una marca
 
         // CategoriaContoller
-        Route::get('categories','CategoriaController@getAllCategoria');
-        Route::get('categories{categoria_id}','CategoriaController@getCategoria');
-        Route::post('categories/edit/{categoria_id}','CategoriaController@editCategoria');
-        Route::post('categories/delete/{categoria_id}','CategoriaController@deleteCategoria');
-        Route::post('categories/add','CategoriaController@addCategoria');
+        Route::get('categoria/all','CategoriaController@getAllCategoria'); //Retorna totes les categories
+        Route::get('categoria{categoria_id}','CategoriaController@getCategoria'); // Retorna la categoria del id especificat
+        Route::post('admin/categoria/edit{categoria_id}','CategoriaController@editCategoria'); // Editem una categoria
+        Route::post('admin/categoria/delete{categoria_id}','CategoriaController@deleteCategoria'); // Eliminem una categoria
+        Route::post('admin/categoria/add','CategoriaController@addCategoria'); // Afegim una categoria
 
         // ColorsController
-        Route::get('color/all','ColorController@getAllColors');
-        Route::get('color{color_id}', 'ColorController@getColor'); // Productes amb color de la id
+        Route::get('color/all','ColorController@getAllColors'); // Retorna tots els colors
+        Route::get('color{color_id}', 'ColorController@getColor'); // Retorna el color amb id especificat
+
+        // UserController
+        Route::get('allUsers','UserController@getAllUsers'); // Retorna tots els usuaris
 
 //    });
 //});

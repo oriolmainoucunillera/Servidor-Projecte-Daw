@@ -12,9 +12,10 @@ class MarcaController extends Controller
         return Marca::all();
     }
 
-    public function getMarca($id)
+    public function getMarca($marca_id)
     {
-        return Marca::find($id);
+        $productes = Producte::where('marca_id', $marca_id)->get();
+        return $productes;
     }
 
     public function addMarca(Request $request)
