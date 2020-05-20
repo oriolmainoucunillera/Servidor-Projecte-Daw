@@ -25,6 +25,7 @@ class CreateProductesTable extends Migration
             $table->string('descripcio_curta');
             $table->text('descripcio_llarga');
             $table->integer('oferta');
+            $table->double('preuOferta');
             $table->timestamps();
 
             $table->foreign('marca_id')->references('id')->on('marcas');

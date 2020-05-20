@@ -15,10 +15,12 @@ class CreateCistellsTable extends Migration
     {
         Schema::create('cistells', function (Blueprint $table) {
             $table->id();
+            $table->integer('cistella_id')->unique(); // serà un random
             $table->foreignId('user_id');
             $table->foreignId('producte_id');
+            $table->double('preu');
             $table->integer('quantitat');
-            $table->double('preu_producte');
+            $table->double('preu_final');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

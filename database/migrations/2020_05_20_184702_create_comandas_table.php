@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompraFinalsTable extends Migration
+class CreateComandasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateCompraFinalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('compra_finals', function (Blueprint $table) {
+        Schema::create('comandas', function (Blueprint $table) {
             $table->id();
+            $table->integer('cistella_id')->unique(); // serà el mateix que a la taula cistells
             $table->foreignId('user_id');
-            $table->integer('comanda_id')->unique(); // sera al meteix que cistella i comanda
+            $table->foreignId('producte_id');
+            $table->double('preu');
+            $table->integer('quantitat');
             $table->double('preu_final');
-            $table->string('direccio');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('producte_id')->references('id')->on('productes');
         });
     }
 
@@ -32,6 +35,6 @@ class CreateCompraFinalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('compra_finals');
+        Schema::dropIfExists('comandas');
     }
 }
