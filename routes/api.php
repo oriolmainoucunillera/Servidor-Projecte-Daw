@@ -61,6 +61,19 @@ use Illuminate\Support\Facades\Route;
 
         // UserController
         Route::get('allUsers','UserController@getAllUsers'); // Retorna tots els usuaris
+        Route::get('allUsers{user_id}','UserController@getUser'); // Retorna usuaris amb id seleccionat
+
+        // CistellaController
+        Route::get('cistells/all','CistellaController@getAllCistells'); // Retorna tots els cistells
+        Route::get('cistells{cistella_id}','CistellaController@getCistell'); // Retorna cistells amb id seleccionat
+
+        // ComandaController
+        Route::get('comandes/all','ComandaController@getAllComandes'); // Retorna totes les comandes
+        Route::get('comandes{comanda_id}','ComandaController@getComanda'); // Retorna comandes amb id seleccionat
+
+        // CompraFinalController
+        Route::get('compresfinals/all','CompraFinalController@getAllCompra_final'); // Retorna totes les compres finals
+        Route::get('compresfinals{comprafinal_id}','CompraFinalController@getCompra_final'); // Retorna compres finals amb id seleccionat
 
 //    });
 //});
