@@ -78,5 +78,10 @@ use Illuminate\Support\Facades\Route;
         Route::get('compresfinals{comprafinal_id}','CompraFinalController@getCompra_final'); // Retorna compres finals amb id seleccionat
         Route::get('afegirComprafinal','CompraFinalController@afegirCompra_final'); // AFegeix compra final
 
+        // EventController
+        Route::get('events/all', 'EventController@getAllEvents'); // mostra totes les tasques
+        Route::post('events_delete{id}', 'EventController@event_eliminar'); // //Eliminar una tasca determinada
+        Route::post('events_crear', 'EventController@event_crear'); // Crear una tasca
+
 //    });
 //});
