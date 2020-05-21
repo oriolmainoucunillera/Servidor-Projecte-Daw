@@ -66,14 +66,17 @@ use Illuminate\Support\Facades\Route;
         // CistellaController
         Route::get('cistells/all','CistellaController@getAllCistells'); // Retorna tots els cistells
         Route::get('cistells{cistella_id}','CistellaController@getCistell'); // Retorna cistells amb id seleccionat
+        Route::get('afegirCarrito','CistellaController@afegirCarrito'); // Afegeix a la cistella
 
         // ComandaController
         Route::get('comandes/all','ComandaController@getAllComandes'); // Retorna totes les comandes
         Route::get('comandes{comanda_id}','ComandaController@getComanda'); // Retorna comandes amb id seleccionat
+        Route::get('afegirComanda','ComandaController@afegirComanda'); // Afegeix comanda
 
         // CompraFinalController
         Route::get('compresfinals/all','CompraFinalController@getAllCompra_final'); // Retorna totes les compres finals
         Route::get('compresfinals{comprafinal_id}','CompraFinalController@getCompra_final'); // Retorna compres finals amb id seleccionat
+        Route::get('afegirComprafinal','CompraFinalController@afegirCompra_final'); // AFegeix compra final
 
 //    });
 //});

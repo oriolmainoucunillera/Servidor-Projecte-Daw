@@ -17,4 +17,17 @@ class ComandaController extends Controller
         $comandes = Comanda::where('id', $comanda_id)->get();
         return $comandes;
     }
+
+    public function afegirComanda(Request $request)
+    {
+        $comanda = new Comanda();
+        $comanda->cistella_id = $request->cistella_id;
+        $comanda->user_id = $request->user_id;
+        $comanda->producte_id = $request->producte_id;
+        $comanda->preu = $request->preuOferta;
+        $comanda->quantitat = $request->cantidad;
+        $comanda->preu_final = $request->preu_final;
+        $comanda->save();
+        return $comanda;
+    }
 }

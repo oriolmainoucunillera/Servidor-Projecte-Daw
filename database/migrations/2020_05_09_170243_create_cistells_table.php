@@ -15,7 +15,7 @@ class CreateCistellsTable extends Migration
     {
         Schema::create('cistells', function (Blueprint $table) {
             $table->id();
-            $table->integer('cistella_id')->unique(); // serà un random
+            $table->integer('cistella_id'); // serà un random
             $table->foreignId('user_id');
             $table->foreignId('producte_id');
             $table->double('preu');

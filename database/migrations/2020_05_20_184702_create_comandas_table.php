@@ -15,7 +15,7 @@ class CreateComandasTable extends Migration
     {
         Schema::create('comandas', function (Blueprint $table) {
             $table->id();
-            $table->integer('cistella_id')->unique(); // serà el mateix que a la taula cistells
+            $table->integer('cistella_id'); // serà el mateix que a la taula cistells
             $table->foreignId('user_id');
             $table->foreignId('producte_id');
             $table->double('preu');

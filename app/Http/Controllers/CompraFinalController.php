@@ -17,4 +17,15 @@ class CompraFinalController extends Controller
         $compres_finals = CompraFinal::where('id', $compra_final_id)->get();
         return $compres_finals;
     }
+
+    public function afegirCompra_final(Request $request)
+    {
+        $compraFinal = new CompraFinal();
+        $compraFinal->user_id = $request->user_id;
+        $compraFinal->comanda_id = $request->comanda_id;
+        $compraFinal->preu_final = $request->preu_final;
+        $compraFinal->direccio = $request->direccio;
+        $compraFinal->save();
+        return $compraFinal;
+    }
 }
