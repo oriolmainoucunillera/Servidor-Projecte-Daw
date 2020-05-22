@@ -54,7 +54,18 @@ class AdministradorController extends Controller
         return $admin;
     }
 
+    public function getAdmin($id) {
+        $admin =  Administrador::findOrFail($id);
+        return $admin;
+    }
+
     public function allAdmins() {
         return Administrador::all();
+    }
+
+    public function deleteAdmin($id) {
+        $admin = Administrador::findOrFail($id);
+        $admin->delete();
+        return 204;
     }
 }

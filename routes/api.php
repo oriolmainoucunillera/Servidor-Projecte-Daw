@@ -37,9 +37,11 @@ use Illuminate\Support\Facades\Route;
         Route::post('admin/add/producte','AdministradorController@addProducte'); // Afegeix un producte
         Route::post('admin/edit/producte{producte_id}','AdministradorController@editProducte'); // Edita el producte amb id especificat
         Route::post('admin/delete/producte{producte_id}','AdministradorController@deleteProducte'); // Elimina el producte
-        Route::post('admin/edit/{usuari_id}','AdministradorController@editAdmin'); // Edita el admin amb id especificat
         Route::post('admin/addAdmin','AdministradorController@addAdmin'); // Afegir un admin
+        Route::post('admin/editAdmin{id}','AdministradorController@editAdmin'); // Editar admin amb id seleccionat
         Route::get('admin/allAdmins', 'AdministradorController@allAdmins'); // Retorna tots els admins
+        Route::get('admin/admin{id}','AdministradorController@getAdmin'); // Retorna el id d'un admin determinat
+        Route::post('admin/delete/admin{id}', 'AdministradorController@deleteAdmin'); // Elimina admin amb id seleccionada
 
         // MarcaController
         Route::get('marca/all','MarcaController@getAllMarca'); // Retorna totes les marques
@@ -66,17 +68,17 @@ use Illuminate\Support\Facades\Route;
         // CistellaController
         Route::get('cistells/all','CistellaController@getAllCistells'); // Retorna tots els cistells
         Route::get('cistells{cistella_id}','CistellaController@getCistell'); // Retorna cistells amb id seleccionat
-        Route::get('afegirCarrito','CistellaController@afegirCarrito'); // Afegeix a la cistella
+        Route::post('afegirCarrito','CistellaController@afegirCarrito'); // Afegeix a la cistella
 
         // ComandaController
         Route::get('comandes/all','ComandaController@getAllComandes'); // Retorna totes les comandes
         Route::get('comandes{comanda_id}','ComandaController@getComanda'); // Retorna comandes amb id seleccionat
-        Route::get('afegirComanda','ComandaController@afegirComanda'); // Afegeix comanda
+        Route::post('afegirComanda','ComandaController@afegirComanda'); // Afegeix comanda
 
         // CompraFinalController
         Route::get('compresfinals/all','CompraFinalController@getAllCompra_final'); // Retorna totes les compres finals
         Route::get('compresfinals{comprafinal_id}','CompraFinalController@getCompra_final'); // Retorna compres finals amb id seleccionat
-        Route::get('afegirComprafinal','CompraFinalController@afegirCompra_final'); // AFegeix compra final
+        Route::post('afegirComprafinal','CompraFinalController@afegirCompra_final'); // AFegeix compra final
 
         // EventController
         Route::get('events/all', 'EventController@getAllEvents'); // mostra totes les tasques

@@ -13,10 +13,10 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
-    public function index()
+    /*public function index()
     {
         return view('home');
-    }
+    }*/
 
     public function getNProductes($max)
     {
