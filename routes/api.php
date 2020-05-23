@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-//Route::group(['prefix' => 'auth'], function () {
-//    Route::post('login', 'AuthController@login');
-//    Route::post('signup', 'AuthController@signup');
-//
-//    Route::group(['middleware' => 'auth:api'], function() {
-//        Route::get('logout', 'AuthController@logout');
-//        Route::get('user', 'AuthController@user');
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
+
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::get('logout', 'AuthController@logout');
+        Route::get('user', 'AuthController@user');
 
         // HomeController
         Route::get('productes/nous/{numero}', 'HomeController@getNProductes'); // Retorna els últims N productes
@@ -85,5 +85,5 @@ use Illuminate\Support\Facades\Route;
         Route::post('events_delete{id}', 'EventController@event_eliminar'); // //Eliminar una tasca determinada
         Route::post('events_crear', 'EventController@event_crear'); // Crear una tasca
 
-//    });
-//});
+    });
+});
