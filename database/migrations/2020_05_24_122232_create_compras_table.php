@@ -4,34 +4,36 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompraFinalsTable extends Migration
+class CreateComprasTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    /*public function up()
+    public function up()
     {
-        Schema::create('compra_finals', function (Blueprint $table) {
+        // NO L'UTILITZEM !!!!!
+
+        Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->integer('comanda_id')->unique(); // sera al meteix que cistella i comanda
-            $table->double('preu_final');
-            $table->string('direccio');
+            $table->foreignId('producte_id');
+            $table->integer('cantidad');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('producte_id')->references('id')->on('productes');
         });
-    }*/
+    }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    /*public function down()
+    public function down()
     {
-        Schema::dropIfExists('compra_finals');
-    }*/
+        Schema::dropIfExists('compras');
+    }
 }

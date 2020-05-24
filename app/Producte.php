@@ -10,6 +10,6 @@ class Producte extends Model
         'nom', 'marca_id', 'stock',
         'preu', 'categoria_id', 'color_id',
         'imatge', 'descripcio_curta',
-        'descripcio_llarga', 'oferta'
+        'descripcio_llarga', 'oferta', 'preuOferta'
     ];
 }

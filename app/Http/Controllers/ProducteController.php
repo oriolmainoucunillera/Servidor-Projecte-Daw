@@ -18,9 +18,9 @@ class ProducteController extends Controller
         return $productes;
     }
 
-    public function getAllCategoria($categoria_id)
+    public function getAllCategoria($id)
     {
-        $productes = Producte::where('categoria_id', $categoria_id)->get();
+        $productes = Producte::where('categoria_id', $id)->get();
         return $productes;
     }
 
@@ -48,11 +48,11 @@ class ProducteController extends Controller
                 ->get();
         } else if($ordre == 'preu_asc') {
             $productes = Producte::query()
-                ->orderBy('preu', 'asc')
+                ->orderBy('preuOferta', 'asc')
                 ->get();
         } else if($ordre == 'preu_desc') {
             $productes = Producte::query()
-                ->orderBy('preu', 'desc')
+                ->orderBy('preuOferta', 'desc')
                 ->get();
         }
         return $productes;

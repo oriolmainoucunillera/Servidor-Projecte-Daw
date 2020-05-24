@@ -21,11 +21,11 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('productes/getUltimesUnitats', 'HomeController@getUltimesUnitats'); // Retorna els 4 productes amb menys stock
         Route::get('productes/getUltimesUnitats2', 'HomeController@getUltimesUnitats2'); // Retorna els productes del 5 al 8 amb menys stock
 
-        // ProducteController
+        // ProducteControlleradministrarAdmin
         Route::get('productes/all','ProducteController@getAllProductes'); // Retorna tots els productes
         Route::get('productes/{producte_id}','ProducteController@getProducte'); // Retorna el producte amb id especificat
         Route::get('productes/categoria/{categoria_id}', 'ProducteController@getAllCategoria'); // Productes amb la id catgoria
-        Route::get('productes_ofertes', 'ProducteController@getOfertes'); // Retorna els productes que estan en oferta
+        Route::get('getOfertes', 'ProducteController@getOfertes'); // Retorna els productes que estan en oferta
         Route::get('buscador/{nom}', 'ProducteController@buscador'); // Retorna tots els productes amb el nom especificat
         Route::get('ordenar/{nom}', 'ProducteController@ordenar'); // Retorna tots els productes ordenats per l'ordre especificat
 
@@ -37,11 +37,8 @@ Route::group(['prefix' => 'auth'], function () {
         Route::post('admin/add/producte','AdministradorController@addProducte'); // Afegeix un producte
         Route::post('admin/edit/producte{producte_id}','AdministradorController@editProducte'); // Edita el producte amb id especificat
         Route::post('admin/delete/producte{producte_id}','AdministradorController@deleteProducte'); // Elimina el producte
-        Route::post('admin/addAdmin','AdministradorController@addAdmin'); // Afegir un admin
-        Route::post('admin/editAdmin{id}','AdministradorController@editAdmin'); // Editar admin amb id seleccionat
-        Route::get('admin/allAdmins', 'AdministradorController@allAdmins'); // Retorna tots els admins
-        Route::get('admin/admin{id}','AdministradorController@getAdmin'); // Retorna el id d'un admin determinat
-        Route::post('admin/delete/admin{id}', 'AdministradorController@deleteAdmin'); // Elimina admin amb id seleccionada
+        Route::post('admin/administrarAdmin', 'AdministradorController@administrarAdmin'); // Fer que un usuari sigui admin o no
+        Route::get('admin/admin{id}','AdministradorController@getAdmin'); // Retorna l'admin --> no funciona!!!!!
 
         // MarcaController
         Route::get('marca/all','MarcaController@getAllMarca'); // Retorna totes les marques
@@ -59,7 +56,7 @@ Route::group(['prefix' => 'auth'], function () {
 
         // ColorsController
         Route::get('color/all','ColorController@getAllColors'); // Retorna tots els colors
-        Route::get('color{color_id}', 'ColorController@getColor'); // Retorna el color amb id especificat
+        Route::get('color{color_id}', 'ColorController@getColor'); // Retorna els productes amb color_id especificat
 
         // UserController
         Route::get('allUsers','UserController@getAllUsers'); // Retorna tots els usuaris
@@ -67,23 +64,22 @@ Route::group(['prefix' => 'auth'], function () {
 
         // CistellaController
         Route::get('cistells/all','CistellaController@getAllCistells'); // Retorna tots els cistells
-        Route::get('cistells{cistella_id}','CistellaController@getCistell'); // Retorna cistells amb id seleccionat
+        Route::get('cistells{id}','CistellaController@getCistell'); // Retorna cistells amb id seleccionat
         Route::post('afegirCarrito','CistellaController@afegirCarrito'); // Afegeix a la cistella
+        Route::post('eliminarProductoCarrito/{id}','CistellaController@eliminarProductoCarrito');//Esborrar un producte del carret
+        Route::get('preuCistella', 'CistellaController@preuTotal');//Retorna el preu total de la cistella
+        Route::get('elementsCistella', 'CistellaController@elementsCistella');//Retorna el nº d'elements de la cistella
+        Route::get('getCistellaId', 'CistellaController@getCistellaId');//Retorna el id_cistella d'una cistella
 
         // ComandaController
         Route::get('comandes/all','ComandaController@getAllComandes'); // Retorna totes les comandes
         Route::get('comandes{comanda_id}','ComandaController@getComanda'); // Retorna comandes amb id seleccionat
         Route::post('afegirComanda','ComandaController@afegirComanda'); // Afegeix comanda
 
-        // CompraFinalController
-        Route::get('compresfinals/all','CompraFinalController@getAllCompra_final'); // Retorna totes les compres finals
-        Route::get('compresfinals{comprafinal_id}','CompraFinalController@getCompra_final'); // Retorna compres finals amb id seleccionat
-        Route::post('afegirComprafinal','CompraFinalController@afegirCompra_final'); // AFegeix compra final
-
         // EventController
-        Route::get('events/all', 'EventController@getAllEvents'); // mostra totes les tasques
-        Route::post('events_delete{id}', 'EventController@event_eliminar'); // //Eliminar una tasca determinada
-        Route::post('events_crear', 'EventController@event_crear'); // Crear una tasca
-
+        Route::get('eventos', 'EventController@getAllEvents'); // mostra totes les tasques
+        Route::post('eventos_delete{id}', 'EventController@event_eliminar'); // //Eliminar una tasca determinada
+        Route::post('evento_crear', 'EventController@event_crear'); // Crear una tasca
+        Route::get('eventoDetalle{id}', 'EventController@eventoDetalle'); //Retorna un event amb el id determinat
     });
 });

@@ -13,13 +13,6 @@ class EventController extends Controller
         return $events;
     }
 
-    public function event_eliminar($event_id)
-    {
-        $event = Event::findOrFail($event_id);
-        $event->delete();
-        return $event;
-    }
-
     public function event_crear(Request $request)
     {
         $newEvent = new Event;
@@ -27,5 +20,17 @@ class EventController extends Controller
         $newEvent->data_hora = $request->input('data_hora');
         $newEvent->save();
         return $newEvent;
+    }
+
+    public function event_eliminar($id)
+    {
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return 204;
+    }
+
+    public function eventoDetalle($id) {
+        $eventos =  Event::findOrFail($id);
+        return $eventos;
     }
 }

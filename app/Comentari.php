@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comentari extends Model
 {
-    protected $fillable = [
+    // MODEL NO UTILITZAT
+
+    /*protected $fillable = [
         'user_id', 'producte_id', 'comentari', 'foto',
-    ];
+    ];*/
 }

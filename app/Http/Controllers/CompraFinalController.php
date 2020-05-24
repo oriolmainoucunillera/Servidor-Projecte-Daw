@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class CompraFinalController extends Controller
 {
-    public function getAllCompra_final()
+    // FINALMENT CONTROLLER NO UTILITZAT.
+
+    /*public function getAllCompra_final()
     {
         return CompraFinal::all();
     }
@@ -27,5 +29,5 @@ class CompraFinalController extends Controller
         $compraFinal->direccio = $request->direccio;
         $compraFinal->save();
         return $compraFinal;
-    }
+    }*/
 }

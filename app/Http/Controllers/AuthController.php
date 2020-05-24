@@ -20,6 +20,7 @@ class AuthController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => bcrypt($request->password),
+            'esAdmin' => 0,
         ]);
         $user->save();
         return response()->json([

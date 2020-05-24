@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Administrador;
 use App\Producte;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdministradorController extends Controller
 {
@@ -24,6 +25,7 @@ class AdministradorController extends Controller
         $producte->descripcio_curta = $request->descripcio_curta;
         $producte->descripcio_llarga = $request->descripcio_llarga;
         $producte->oferta = $request->oferta;
+        $producte->preuOferta = $request->preuOferta;
         $producte->imatge = $request->imatge;
         $producte->save();
         return $producte;
@@ -41,31 +43,12 @@ class AdministradorController extends Controller
         return 204;
     }
 
-    public function addAdmin(Request $request)
-    {
-        $admin = Administrador::create($request->all());
-        return $admin;
-    }
-
-    public function editAdmin($id, Request $request)
-    {
-        $admin = Administrador::findOrFail($id);
-        $admin->update($request->all());
-        return $admin;
-    }
-
     public function getAdmin($id) {
         $admin =  Administrador::findOrFail($id);
         return $admin;
     }
 
-    public function allAdmins() {
-        return Administrador::all();
-    }
-
-    public function deleteAdmin($id) {
-        $admin = Administrador::findOrFail($id);
-        $admin->delete();
-        return 204;
+    public function administrarAdmin(Request $request) {
+        DB::table('users')->where('id', $request->id)->update([ 'esAdmin' => $request->esAdmin ]);
     }
 }
