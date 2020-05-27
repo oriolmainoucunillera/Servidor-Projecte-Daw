@@ -27,18 +27,23 @@ Route::group(['prefix' => 'auth'], function () {
         Route::post('comprar', 'CompraController@comprarProducte'); // Realitza compra d'un producte
 
         // CistellaController
-        Route::get('cistells/all','CistellaController@getAllCistells'); // Retorna tots els cistells
-        Route::get('cistells{id}','CistellaController@getCistell'); // Retorna cistells amb id seleccionat
+        //Route::get('cistells/all','CistellaController@getAllCistells'); // Retorna tots els cistells
+        //Route::get('cistells{id}','CistellaController@getCistell'); // Retorna cistells amb id seleccionat
+        //Route::get('preuCistella', 'CistellaController@preuTotal'); //Retorna el preu total de la cistella
+        //Route::get('elementsCistella', 'CistellaController@elementsCistella'); //Retorna el nº d'elements de la cistella
         Route::post('afegirCarrito','CistellaController@afegirCarrito'); // Afegeix a la cistella
         Route::post('eliminarProductoCarrito/{id}','CistellaController@eliminarProductoCarrito'); // Esborrar un producte del carret
-        Route::get('preuCistella', 'CistellaController@preuTotal'); //Retorna el preu total de la cistella
-        Route::get('elementsCistella', 'CistellaController@elementsCistella'); //Retorna el nº d'elements de la cistella
         Route::get('getCistellaId', 'CistellaController@getCistellaId'); //Retorna el id_cistella d'una cistella
+        Route::get('cistella{id}','ExtraController@cistella'); // Retorna tots els productes del cistell
+        Route::get('preuCompra{id}', 'ExtraController@preuCompra'); // Retorna el preu total d'una compra/cistella
+        Route::get('numCistella{id}', 'ExtraController@productesCistella'); //Retorna el nombre total de productes a la cistella
+        Route::get('idCistell{id}', 'ExtraController@idCistell');  //Retorna cistells amb id seleccionat
 
         // ComandaController
         Route::get('comandes/all','ComandaController@getAllComandes'); // Retorna totes les comandes
         Route::get('comandes{comanda_id}','ComandaController@getComanda'); // Retorna comandes amb id seleccionat
         Route::post('afegirComanda','ComandaController@afegirComanda'); // Afegeix comanda
+        Route::get('allComandes', 'ComandaController@allComandes'); // Retorna totes les comandes
 
         // EventController
         Route::get('eventos', 'EventController@getAllEvents'); // mostra totes les tasques

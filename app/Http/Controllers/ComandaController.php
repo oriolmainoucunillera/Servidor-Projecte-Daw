@@ -28,9 +28,15 @@ class ComandaController extends Controller
         $comanda->quantitat = $request->quantitat;
         $comanda->preu_final = $request->preu_final;
         $comanda->save();
+
         $numProductes = DB::table('productes')->where('id', $request->producte_id)->value('stock');
         $final = $numProductes - $request->quantitat;
         DB::table('productes')->where('id', $request->producte_id)->update([ 'stock' => $final ]);
         return $comanda;
+    }
+
+    public function allComandes() {
+        $comandes = Comanda::all();
+        return$comandes;
     }
 }

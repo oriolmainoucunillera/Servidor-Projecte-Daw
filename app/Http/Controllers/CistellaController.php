@@ -10,15 +10,18 @@ class CistellaController extends Controller
 {
     public function getAllCistells()
     {
-        return Cistell::all();
+        $cistell = Cistell::all();
+        return $cistell;
     }
 
-    public function elementsCistella() {
+    public function elementsCistella()
+    {
         $elements = Cistell::count();
         return $elements;
     }
 
-    public function getCistellaId() {
+    public function getCistellaId()
+    {
         $cistella_id = Cistell::query()
             ->first()
             ->value('cistella_id');
@@ -27,11 +30,12 @@ class CistellaController extends Controller
 
     public function getCistell($id)
     {
-        $productes =  Cistell::findOrFail($id);
+        $productes = Cistell::findOrFail($id);
         return $productes;
     }
 
-    public function afegirCarrito(Request $request) {
+    public function afegirCarrito(Request $request)
+    {
         $cistell = new Cistell();
         $cistell->cistella_id = $request->cistella_id;
         $cistell->user_id = $request->user_id;
@@ -43,13 +47,15 @@ class CistellaController extends Controller
         return $cistell;
     }
 
-    public function eliminarProductoCarrito($id) {
+    public function eliminarProductoCarrito($id)
+    {
         $cistell = Cistell::findOrFail($id);
         $cistell->delete();
         return 204;
     }
 
-    public function preuTotal() {
+    public function preuTotal()
+    {
         $preuTotal = Cistell::sum('preu_final');
         return $preuTotal;
     }
